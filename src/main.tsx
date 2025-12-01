@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import routes from './routes/routes'
 import './styles/globals.css'
+import { ThemeProvider } from './contexts/ThemeProvider'
 
 const router = createBrowserRouter(routes, {
   basename: '/'
@@ -16,6 +17,8 @@ if (!(rootElement instanceof HTMLElement)) {
 
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </StrictMode>
 )
