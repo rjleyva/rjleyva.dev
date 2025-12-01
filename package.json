@@ -1,7 +1,10 @@
 {
   "name": "rjleyva-dev",
+  "author": "RJ Leyva",
+  "description": "RJ Leyva's personal blog documenting web development insights through writing.",
+  "license": "MIT",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
