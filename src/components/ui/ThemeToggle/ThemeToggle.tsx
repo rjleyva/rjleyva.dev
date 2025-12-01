@@ -24,13 +24,13 @@ const ThemeToggle = ({ className }: ThemeToggleProps): React.JSX.Element => {
       onClick={handleToggle}
       className={`${styles['theme-toggle']} interactive-element ${className ?? ''}`}
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
-      title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
     >
       <span className={`${styles['theme-toggle__icon']} flex-center`}>
-        {isDark ? <SunIcon /> : <MoonIcon />}
-      </span>
-      <span className="sr-only">
-        {isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+        {isDark ? (
+          <SunIcon ariaLabel="" title="" />
+        ) : (
+          <MoonIcon ariaLabel="" title="" />
+        )}
       </span>
     </button>
   )
