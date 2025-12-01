@@ -1,6 +1,7 @@
 import type React from 'react'
 import { Link } from 'react-router'
 import Logo from '@/components/icons/Logo'
+import Socials from '../Socials/Socials'
 import styles from './header.module.css'
 
 const Header = (): React.JSX.Element => {
@@ -14,6 +15,10 @@ const Header = (): React.JSX.Element => {
         <Link to="/">
           <Logo />
         </Link>
+
+        <div className={styles['header__actions']}>
+          <Socials />
+        </div>
       </nav>
     </header>
   )
