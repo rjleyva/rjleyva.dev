@@ -8,14 +8,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generate-content-imports.ts && tsc && vite build",
+    "build": "node scripts/generateContentImports.ts && tsc && vite build",
+    "generate-content": "node scripts/generateContentImports.ts",
     "preview": "vite preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css,json}\"",
-    "type-check": "tsc --noEmit",
-    "generate-content": "node scripts/generate-content-imports.ts"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "modern-normalize": "^3.0.1",
