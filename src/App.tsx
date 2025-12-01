@@ -1,7 +1,7 @@
-import type React from "react";
+import type React from 'react'
 
 const App = (): React.JSX.Element => {
-  return <section id="home-content">Hero</section>;
-};
+  return <section id="home-content">Hero</section>
+}
 
-export default App;
+export default App
