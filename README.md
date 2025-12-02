@@ -1,4 +1,4 @@
-# rjleyva.dev
+# rjleyva-writes
 
 RJ Leyva's personal blog, documenting web development insights through writing.
 
@@ -7,6 +7,18 @@ RJ Leyva's personal blog, documenting web development insights through writing.
 ## Current Status (WIP)
 
 ![rjleyva.dev-screenshot](./images/rjleyva.dev-screenshot.jpeg)
+
+## TODO - Performance Optimizations
+
+- [ ] Implement React.lazy() for route-based code splitting to reduce initial bundle size
+- [ ] Add image optimization with lazy loading and WebP format support
+- [ ] Implement service worker for static asset caching and offline support
+- [ ] Add React.memo() and useMemo() to prevent unnecessary re-renders
+- [ ] **Change markdown approach**: Replace dual-processing (build-time HTML +
+      runtime React) with single-pass approach - either use pre-rendered HTML with
+      dangerouslySetInnerHTML or optimize React-based rendering with proper caching
+- [ ] Optimize markdown rendering performance with caching strategies
+- [ ] Add preload hints for critical resources and routes
 
 ## Current Project Structure
 
