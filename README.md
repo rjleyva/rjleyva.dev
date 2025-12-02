@@ -6,7 +6,7 @@ RJ Leyva's personal blog, documenting web development insights through writing.
 
 ## Current Status (WIP)
 
-![rjleyva.dev-screen-shot](./images/rjleyva-dev-sc.jpeg)
+![rjleyva.dev-screenshot](./images/rjleyva.dev-screenshot.jpeg)
 
 ## Current Project Structure
 
@@ -15,6 +15,8 @@ rjleyva.dev/
 | .git/
 | .jj/
 | dist/
+| images/
+| | rjleyva.dev-screenshot.jpeg
 | node_modules/
 | scripts/
 | | generateContentImports.ts
@@ -33,6 +35,9 @@ rjleyva.dev/
 | | | | BlogCard/
 | | | | | BlogCard.tsx
 | | | | | blog-card.module.css
+| | | | BlogPosts/
+| | | | | BlogPosts.tsx
+| | | | | blog-posts.module.css
 | | | | CodeBlock/
 | | | | | CodeBlock.tsx
 | | | | | code-block.module.css
@@ -57,13 +62,14 @@ rjleyva.dev/
 | | content/
 | | | blog/
 | | | | jj/
-| | | | | how-i-use-jujutsu.md                   # Sample Post
+| | | | | how-i-use-jujutsu.md                  # Sample post
 | | | | react/
-| | | | | how-i-structure-a-vite-react-blog.md   # Sample Post
+| | | | | how-i-structure-a-vite-react-blog.md  # Sample post
 | | contexts/
 | | | ThemeProvider.tsx
 | | | themeContext.ts
 | | hooks/
+| | | useBlog.ts
 | | | useClipboard.ts
 | | | useTheme.ts
 | | layouts/
@@ -71,14 +77,21 @@ rjleyva.dev/
 | | | home-layout.module.css
 | | lib/
 | | | content/
+| | | | contentLoader.ts
 | | | | generatedContent.ts
+| | | blogContentApi.ts
 | | | mardownRender.ts
 | | | postFormattingUtlis.ts
-| | main.tsx
 | | pages/
-| | | Home.tsx
+| | | blog/
+| | | | BlogPage.tsx
+| | | | blog-page.module.css
+| | | home/
+| | | | HomePage.tsx
 | | routes/
 | | | routes.tsx
+| | services/
+| | | markdownRenderingService.ts
 | | styles/
 | | | globals.css
 | | | themes.css
@@ -90,6 +103,7 @@ rjleyva.dev/
 | | | theme.ts
 | | utils/
 | | | reactNodeUtils.ts
+| | main.tsx
 | | vite-env.d.ts
 | .gitignore
 | LICENSE
