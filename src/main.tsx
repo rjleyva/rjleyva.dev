@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import routes from './routes/routes'
 import './styles/globals.css'
 import { ThemeProvider } from './contexts/ThemeProvider'
+import './utils/faviconManager'
 
 const router = createBrowserRouter(routes, {
   basename: '/'
