@@ -2,22 +2,11 @@ import type { Post } from '@/types/post'
 import { processedPosts } from './generatedContent'
 
 const convertProcessedPosts = (): Post[] => {
-  return processedPosts.map(
-    (post: {
-      title: string
-      date: string
-      description: string
-      tags: string[]
-      slug: string
-      topic: string
-      content: string
-      htmlContent: string
-      readingTime: number
-    }) => ({
-      ...post,
-      date: new Date(post.date)
-    })
-  )
+  return processedPosts.map(post => ({
+    ...post,
+    date: new Date(post.date),
+    tags: [...post.tags]
+  }))
 }
 
 export const posts: Post[] = convertProcessedPosts()
