@@ -6,7 +6,13 @@ RJ Leyva's personal blog, documenting web development insights through writing.
 
 ## Current Status (WIP)
 
-![rjleyva.dev-screenshot](./images/rjleyva.dev-screenshot.jpeg)
+### Home Page
+
+![rjleyva-home-page-screenshot](./images/home-page-screenshot.jpeg)
+
+### Blog Page
+
+![rjleyva-blog-page-screenshot](./images/blog-page-screenshot.jpeg)
 
 ## TODO - Performance Optimizations
 
@@ -28,11 +34,13 @@ rjleyva-writes/
 | .jj/
 | dist/
 | images/
-| | rjleyva.dev-screenshot.jpeg
+| | blog-page-screenshot.jpeg
+| | home-page-screenshot.jpeg
 | node_modules/
 | public/
-| | favicon-dark.svg
-| | favicon-light.svg
+| | favicons/
+| | | favicon-dark.svg
+| | | favicon-light.svg
 | | fonts/
 | | | inter-extrabold.woff2
 | | | inter-regular.woff2
@@ -53,44 +61,27 @@ rjleyva-writes/
 | | | | SunIcon.tsx
 | | | ui/
 | | | | BlogCard/
-| | | | | BlogCard.tsx
-| | | | | blog-card.module.css
 | | | | BlogPosts/
-| | | | | BlogPosts.tsx
-| | | | | blog-posts.module.css
+| | | | BlogPostsGrid/
+| | | | BlogPostsHeader/
+| | | | BlogPostsSidebar/
 | | | | CodeBlock/
-| | | | | CodeBlock.tsx
-| | | | | code-block.module.css
 | | | | Header/
-| | | | | Header.tsx
-| | | | | header.module.css
 | | | | Hero/
-| | | | | Hero.tsx
-| | | | | hero.module.css
 | | | | LoadingSpinner/
-| | | | | LoadingSpinner.tsx
-| | | | | loading-spinner.module.css
 | | | | RecentPost/
-| | | | | RecentPost.tsx
-| | | | | recent-post.module.css
 | | | | SeeAllPostsLink/
-| | | | | SeeAllPostsLink.tsx
-| | | | | see-all-posts-link.module.css
 | | | | Socials/
-| | | | | Socials.tsx
-| | | | | socials.module.css
 | | | | ThemeToggle/
-| | | | | ThemeToggle.tsx
-| | | | | theme-toggle.module.css
 | | constants/
 | | | socialLinks.ts
 | | | theme.ts
 | | content/
 | | | blog/
 | | | | jj/
-| | | | | how-i-use-jujutsu.md
+| | | | | how-i-use-jujutsu.md                 # Sample Post
 | | | | react/
-| | | | | how-i-structure-a-vite-react-blog.md
+| | | | | how-i-structure-a-vite-react-blog.md # Sample Post
 | | contexts/
 | | | ThemeProvider.tsx
 | | | themeContext.ts
@@ -102,13 +93,12 @@ rjleyva-writes/
 | | | MainLayout.tsx
 | | | home-layout.module.css
 | | lib/
-| | | blogContentApi.ts
 | | | content/
 | | | | contentLoader.ts
 | | | | generatedContent.ts
+| | | blogContentApi.ts
 | | | mardownRender.ts
 | | | postFormattingUtlis.ts
-| | main.tsx
 | | pages/
 | | | blog/
 | | | | BlogPage.tsx
@@ -130,8 +120,10 @@ rjleyva-writes/
 | | | post.ts
 | | | theme.ts
 | | utils/
+| | | blogUtils.ts
 | | | faviconManager.ts
 | | | reactNodeUtils.ts
+| | main.tsx
 | | vite-env.d.ts
 | .gitignore
 | LICENSE
