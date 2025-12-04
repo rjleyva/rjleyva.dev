@@ -7,17 +7,27 @@ import styles from './blog-page.module.css'
 
 const BlogPage = (): React.JSX.Element => {
   const { post, loading, error } = useGetPost()
-  const [enhancedContent, setEnhancedContent] =
-    useState<React.JSX.Element | null>(null)
+  const [contentState, setContentState] = useState<{
+    content: React.JSX.Element | null
+    error: string | null
+    isLoading: boolean
+  }>({ content: null, error: null, isLoading: false })
 
   useEffect(() => {
     const content = post?.content
+
     if (content != null && content.trim() !== '') {
       renderMarkdown(content)
-        .then(({ dom }) => setEnhancedContent(dom))
+        .then(({ dom }) => {
+          setContentState({ content: dom, error: null, isLoading: false })
+        })
         .catch(err => {
           console.error('Failed to render markdown:', err)
-          setEnhancedContent(null)
+          setContentState({
+            content: null,
+            error: 'Failed to render content',
+            isLoading: false
+          })
         })
     }
   }, [post?.content])
@@ -59,7 +69,11 @@ const BlogPage = (): React.JSX.Element => {
 
       <div className={styles['blog-page__content']}>
         <div className="markdown-content">
-          {enhancedContent ?? <div>Content loading...</div>}
+          {contentState.error != null ? (
+            <div className="error-message">{contentState.error}</div>
+          ) : (
+            (contentState.content ?? <div>Content loading...</div>)
+          )}
         </div>
       </div>
     </article>
