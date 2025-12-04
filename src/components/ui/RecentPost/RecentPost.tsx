@@ -1,17 +1,13 @@
 import type React from 'react'
-import { processedPosts } from '@/lib/content/generatedContent'
+import { getAllPosts } from '@/lib/content/contentLoader'
 import type { Post } from '@/types/post'
 import BlogCard from '../BlogCard/BlogCard'
 import styles from './recent-post.module.css'
 
 const RecentPost = (): React.JSX.Element => {
-  const recentPosts: Post[] = processedPosts
+  const recentPosts: Post[] = getAllPosts()
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3)
-    .map(post => ({
-      ...post,
-      date: new Date(post.date)
-    }))
 
   return (
     <section aria-label="recent-posts-heading">
@@ -21,7 +17,7 @@ const RecentPost = (): React.JSX.Element => {
             Recent Posts
           </h2>
           <div className="blog-grid">
-            {recentPosts.map((post: Post) => (
+            {recentPosts.map(post => (
               <BlogCard key={post.slug} post={post} />
             ))}
           </div>
