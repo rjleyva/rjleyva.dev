@@ -6,7 +6,6 @@ export interface Post {
   slug: string
   topic: string
   content: string
-  htmlContent: string
   readingTime: number
 }
 
