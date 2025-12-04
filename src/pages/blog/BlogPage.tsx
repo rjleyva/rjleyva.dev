@@ -1,5 +1,5 @@
 import type React from 'react'
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { useGetPost } from '@/hooks/useBlog'
 import { getPostMetadata } from '@/lib/postFormattingUtlis'
 import { renderMarkdown } from '@/services/markdownRenderingService'
@@ -7,26 +7,19 @@ import styles from './blog-page.module.css'
 
 const BlogPage = (): React.JSX.Element => {
   const { post, loading, error } = useGetPost()
-  const [enhancedDom, setEnhancedDom] = useState<React.JSX.Element | null>(null)
-  const [contentError, setContentError] = useState<Error | null>(null)
+  const [enhancedContent, setEnhancedContent] =
+    useState<React.JSX.Element | null>(null)
 
   useEffect(() => {
-    if (post?.content == null) return
-
-    const enhanceContent = async (): Promise<void> => {
-      try {
-        setContentError(null)
-        const { dom: enhancedContent } = await renderMarkdown(post.content)
-        setEnhancedDom(enhancedContent)
-      } catch (err) {
-        const errorMessage = err instanceof Error ? err : new Error(String(err))
-        console.error(`Failed to enhance content: ${errorMessage.message}`)
-        setContentError(errorMessage)
-        setEnhancedDom(null)
-      }
+    const content = post?.content
+    if (content != null && content.trim() !== '') {
+      renderMarkdown(content)
+        .then(({ dom }) => setEnhancedContent(dom))
+        .catch(err => {
+          console.error('Failed to render markdown:', err)
+          setEnhancedContent(null)
+        })
     }
-
-    enhanceContent()
   }, [post?.content])
 
   if (loading) {
@@ -66,19 +59,11 @@ const BlogPage = (): React.JSX.Element => {
 
       <div className={styles['blog-page__content']}>
         <div className="markdown-content">
-          {contentError ? (
-            <div className="error-message">
-              Failed to render content: {contentError.message}
-            </div>
-          ) : (
-            (enhancedDom ?? (
-              <div dangerouslySetInnerHTML={{ __html: post.htmlContent }} />
-            ))
-          )}
+          {enhancedContent ?? <div>Content loading...</div>}
         </div>
       </div>
     </article>
   )
 }
 
-export default BlogPage
+export default memo(BlogPage)
