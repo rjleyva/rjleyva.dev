@@ -1,45 +1,48 @@
 class FaviconManager {
-  private faviconLink: HTMLLinkElement | null = null
+  private faviconLinkElement: HTMLLinkElement | null = null
 
   constructor() {
-    this.initialize()
+    this.setupFaviconManagement()
   }
 
-  private initialize(): void {
-    // Reuse existing favicon link or create one for dynamic updates
-    this.faviconLink = document.querySelector(
+  private setupFaviconManagement(): void {
+    this.faviconLinkElement = document.querySelector(
       'link[rel="icon"]'
     ) as HTMLLinkElement | null
 
-    if (!this.faviconLink) {
-      this.faviconLink = document.createElement('link')
-      this.faviconLink.rel = 'icon'
-      this.faviconLink.type = 'image/svg+xml'
-      document.head.appendChild(this.faviconLink)
+    if (!this.faviconLinkElement) {
+      this.faviconLinkElement = document.createElement('link')
+      this.faviconLinkElement.rel = 'icon'
+      this.faviconLinkElement.type = 'image/svg+xml'
+      document.head.appendChild(this.faviconLinkElement)
     }
 
-    this.updateFavicon()
+    this.updateFaviconBasedOnSystemTheme()
 
-    // Sync with system theme changes
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    mediaQuery.addEventListener('change', () => this.updateFavicon())
+    const systemThemeMediaQuery = window.matchMedia(
+      '(prefers-color-scheme: dark)'
+    )
+    systemThemeMediaQuery.addEventListener('change', () =>
+      this.updateFaviconBasedOnSystemTheme()
+    )
   }
 
-  private updateFavicon(): void {
-    if (!this.faviconLink) return
+  private updateFaviconBasedOnSystemTheme(): void {
+    if (!this.faviconLinkElement) return
 
-    const prefersDark = window.matchMedia(
+    const systemPrefersDarkTheme = window.matchMedia(
       '(prefers-color-scheme: dark)'
     ).matches
-    this.faviconLink.href = prefersDark
-      ? '/favicon-dark.svg'
-      : '/favicon-light.svg'
+    this.faviconLinkElement.href = systemPrefersDarkTheme
+      ? '/favicons/favicon-dark.svg'
+      : '/favicons/favicon-light.svg'
   }
 
-  /** Override system preference for manual theme switching */
-  public setFavicon(isDark: boolean): void {
-    if (!this.faviconLink) return
-    this.faviconLink.href = isDark ? '/favicon-dark.svg' : '/favicon-light.svg'
+  public setFaviconForTheme(isDarkTheme: boolean): void {
+    if (!this.faviconLinkElement) return
+    this.faviconLinkElement.href = isDarkTheme
+      ? '/favicons/favicon-dark.svg'
+      : '/favicons/favicon-light.svg'
   }
 }
 
