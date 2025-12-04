@@ -23,18 +23,26 @@ RJ Leyva's personal blog, documenting web development insights through writing.
 ## Current Project Structure
 
 ```
-rjleyva.dev/
+rjleyva-writes/
 | .git/
 | .jj/
 | dist/
 | images/
 | | rjleyva.dev-screenshot.jpeg
 | node_modules/
+| public/
+| | favicon-dark.svg
+| | favicon-light.svg
+| | fonts/
+| | | inter-extrabold.woff2
+| | | inter-regular.woff2
+| | | inter-semibold.woff2
 | scripts/
 | | generateContentImports.ts
 | src/
 | | components/
 | | | icons/
+| | | | ArrowIcon.tsx
 | | | | CheckIcon.tsx
 | | | | CopyIcon.tsx
 | | | | GithubIcon.tsx
@@ -59,9 +67,15 @@ rjleyva.dev/
 | | | | Hero/
 | | | | | Hero.tsx
 | | | | | hero.module.css
+| | | | LoadingSpinner/
+| | | | | LoadingSpinner.tsx
+| | | | | loading-spinner.module.css
 | | | | RecentPost/
 | | | | | RecentPost.tsx
 | | | | | recent-post.module.css
+| | | | SeeAllPostsLink/
+| | | | | SeeAllPostsLink.tsx
+| | | | | see-all-posts-link.module.css
 | | | | Socials/
 | | | | | Socials.tsx
 | | | | | socials.module.css
@@ -74,9 +88,9 @@ rjleyva.dev/
 | | content/
 | | | blog/
 | | | | jj/
-| | | | | how-i-use-jujutsu.md                  # Sample post
+| | | | | how-i-use-jujutsu.md
 | | | | react/
-| | | | | how-i-structure-a-vite-react-blog.md  # Sample post
+| | | | | how-i-structure-a-vite-react-blog.md
 | | contexts/
 | | | ThemeProvider.tsx
 | | | themeContext.ts
@@ -88,12 +102,13 @@ rjleyva.dev/
 | | | MainLayout.tsx
 | | | home-layout.module.css
 | | lib/
+| | | blogContentApi.ts
 | | | content/
 | | | | contentLoader.ts
 | | | | generatedContent.ts
-| | | blogContentApi.ts
 | | | mardownRender.ts
 | | | postFormattingUtlis.ts
+| | main.tsx
 | | pages/
 | | | blog/
 | | | | BlogPage.tsx
@@ -105,6 +120,7 @@ rjleyva.dev/
 | | services/
 | | | markdownRenderingService.ts
 | | styles/
+| | | fonts.css
 | | | globals.css
 | | | themes.css
 | | | tokens.css
@@ -114,8 +130,8 @@ rjleyva.dev/
 | | | post.ts
 | | | theme.ts
 | | utils/
+| | | faviconManager.ts
 | | | reactNodeUtils.ts
-| | main.tsx
 | | vite-env.d.ts
 | .gitignore
 | LICENSE
