@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { DEFAULT_THEME, THEME_STORAGE_KEY } from '@/constants/theme'
 import { THEMES } from '@/types/theme'
 import type { Theme, ThemeContextType } from '@/types/theme'
+import { faviconManager } from '@/utils/faviconManager'
 import { ThemeContext } from './themeContext'
 
 interface ThemeProviderProps {
@@ -40,6 +41,8 @@ export const ThemeProvider = ({
       meta.content = theme
       document.head.appendChild(meta)
     }
+
+    faviconManager.setFaviconForTheme(theme === THEMES.DARK)
   }, [theme])
 
   const setTheme = (newTheme: Theme): void => {
