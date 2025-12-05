@@ -1,6 +1,6 @@
 import type React from 'react'
 import { Link } from 'react-router'
-import { getPostMetadata } from '@/lib/postFormattingUtlis'
+import { getPostMetadata } from '@/lib/postFormattingUtils'
 import type { Post } from '@/types/post'
 import styles from './blog-card.module.css'
 
