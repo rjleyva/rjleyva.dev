@@ -1,7 +1,5 @@
 .blog-posts-sidebar {
   width: 280px;
-  background: var(--surface-secondary);
-  border-right: 1px solid var(--border-subtle);
   padding: 3rem 2rem;
   position: sticky;
   top: 0;
