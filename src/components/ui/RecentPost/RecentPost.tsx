@@ -1,5 +1,5 @@
 import type React from 'react'
-import { getAllPosts } from '@/lib/content/contentLoader'
+import { getAllPosts } from '@/lib/blogContentApi'
 import type { Post } from '@/types/post'
 import BlogCard from '../BlogCard/BlogCard'
 import styles from './recent-post.module.css'
