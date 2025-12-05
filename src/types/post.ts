@@ -9,6 +9,17 @@ export interface Post {
   readingTime: number
 }
 
+export interface SerializedPost {
+  title: string
+  date: string
+  description: string
+  tags: string[]
+  slug: string
+  topic: string
+  content: string
+  readingTime: number
+}
+
 export interface PostFrontmatter {
   title: string
   date: string | Date
