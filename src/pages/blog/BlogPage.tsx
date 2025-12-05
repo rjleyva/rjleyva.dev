@@ -1,7 +1,7 @@
 import type React from 'react'
 import { memo, useEffect, useRef, useState } from 'react'
 import { useGetPost } from '@/hooks/useBlog'
-import { getPostMetadata } from '@/lib/postFormattingUtlis'
+import { getPostMetadata } from '@/lib/postFormattingUtils'
 import { renderMarkdown } from '@/services/markdownRenderingService'
 import styles from './blog-page.module.css'
 
